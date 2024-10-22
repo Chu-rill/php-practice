@@ -2,24 +2,24 @@
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: ../index.php");
+    exit();
 }
 
 $username = $_POST["username"];
 $pwd = $_POST["pwd"];
-$email = $_POST["email"];
 
-if (empty($username) || empty($pwd) || empty($email)) {
-    exit();
+if (empty($username) || empty($pwd)) {
     header("Location: ../index.php");
+    exit();
 }
 
 try {
     require_once "db.php";
-    $query = "INSERT INTO users (username,pwd,email) VALUES (?,?,?);";
+    $query = "DELETE FROM users WHERE username = ? AND pwd = ?;";
 
     $stmet = $pdo->prepare($query);
 
-    $stmet->execute([$username, $pwd, $email]);
+    $stmet->execute([$username, $pwd]);
 
     $pdo = null;
     $stmet = null;
