@@ -8,10 +8,11 @@
 /* Body Styling */
 body {
   font-family: "Arial", sans-serif;
-  background-color: #f0f0f0;
+  background-color: #6b6868;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
 }
 
